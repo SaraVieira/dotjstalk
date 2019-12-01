@@ -1,12 +1,46 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import ReactDOM from "react-dom";
+import App from "./App";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import Checkout from "./Checkout";
+import ThankYou from "./ThankYou";
+import Styles from "./utils/styles";
+import { Router } from "@reach/router";
+import Header from "./components/header";
+import "./i18n";
+import { Bars } from "svg-loaders-react";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Main = () => {
+  const { i18n } = useTranslation();
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    fetch(
+      "https://api.ipgeolocation.io/ipgeo?apiKey=891717abedb44a3aaab0fd1f8bda0fad"
+    )
+      .then(rsp => rsp.json())
+      .then(response => {
+        i18n.changeLanguage(response.languages);
+        setLoading(false);
+      });
+  }, [i18n]);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  return loading ? (
+    <div className="loading">
+      <Styles />
+      <Bars fill="#FA8D0F" />
+    </div>
+  ) : (
+    <>
+      <Styles />
+      <Header />
+      <Router>
+        <App path="/" />
+        <Checkout path="/checkout" />
+        <ThankYou path="/thank-you" />
+      </Router>
+    </>
+  );
+};
+
+ReactDOM.render(<Main />, document.getElementById("root"));
