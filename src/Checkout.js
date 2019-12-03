@@ -42,7 +42,14 @@ export default () => {
             />
             <input required type="text" placeholder={t("Zip Code")} />
             <input required type="text" placeholder={t("City")} />
-            <input required type="text" placeholder={t("Country")} />
+            <Select>
+              <option selected>{t("Country")}</option>
+              {countries.map(country => (
+                <option key={country.value} value={country.code}>
+                  {country.name}
+                </option>
+              ))}
+            </Select>
             <input
               required
               type="number"
