@@ -32,13 +32,16 @@ const Wrapper = styled.div`
   }
 `;
 
-export default ({ type = "text", label, ...props }) => {
+export default ({ onChange, type = "text", label, ...props }) => {
   const [id] = useState(() => uniqueId("checkout-"));
   const [value, setValue] = useState("");
   return (
     <Wrapper empty={Boolean(!value)}>
       <input
-        onChange={e => setValue(e.target.value)}
+        onChange={e => {
+          setValue(e.target.value);
+          if (onChange) onChange(e);
+        }}
         required
         type={type}
         id={id}

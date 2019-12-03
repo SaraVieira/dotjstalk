@@ -1,21 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 
 import Card from "./components/Card";
 import Input from "./components/Input";
-import { Cards, Select } from "./components/Styled";
+import { CardNumber, Select } from "./components/Styled";
 import { useTranslation } from "react-i18next";
 import countries from "./utils/countries.json";
+import creditCardType from "credit-card-type";
+import unkown from "./images/unknown.svg";
 
 export default () => {
-  const [showCards, setShowCards] = useState(false);
   const [showBilling, setShowBilling] = useState(false);
+  const [cardType, setCardType] = useState(false);
+  const [cardNumber, setCardNumber] = useState("");
   const { t } = useTranslation();
 
   const onSubmit = e => {
     e.preventDefault();
     navigate("/thank-you");
   };
+
+  useEffect(() => {
+    if (creditCardType(cardNumber).length === 1) {
+      setCardType(creditCardType(cardNumber)[0].niceType);
+    }
+  }, [cardNumber]);
   return (
     <>
       <main className="App">
@@ -58,28 +67,25 @@ export default () => {
           ) : null}
           <fieldset>
             <legend>{t("Payment Data")}</legend>
-            {showCards ? (
-              <>
-                <Input full required label={t("Name on Card")} />
-                <Input full required type="number" label={t("Card Number")} />
-                <Input required type="number" label={t("Expiration Month")} />
-                <Input required type="number" label={t("Expiration Year")} />
-                <Input required type="number" label={t("CCV")} />
-              </>
-            ) : (
-              <>
-                <h4>{t("Select your Card Type")}</h4>
-                <Cards>
-                  <Card
-                    type="American Express"
-                    onClick={() => setShowCards(true)}
-                  />
-                  <Card type="Mastercard" onClick={() => setShowCards(true)} />
-                  <Card type="Discover" onClick={() => setShowCards(true)} />
-                  <Card type="Visa" onClick={() => setShowCards(true)} />
-                </Cards>
-              </>
-            )}
+            <>
+              <CardNumber>
+                {cardType ? (
+                  <Card type={cardType} />
+                ) : (
+                  <img src={unkown} alt="Unknown Card" />
+                )}
+                <Input
+                  full
+                  required
+                  onChange={e => setCardNumber(e.target.value)}
+                  type="number"
+                  label={t("Card Number")}
+                />
+              </CardNumber>
+              <Input required type="number" label={t("Expiration Month")} />
+              <Input required type="number" label={t("Expiration Year")} />
+              <Input required type="number" label={t("CCV")} />
+            </>
           </fieldset>
           <button
             style={{ marginTop: "2rem", width: "100%" }}

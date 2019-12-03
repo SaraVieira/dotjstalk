@@ -44,10 +44,14 @@ export const Countries = styled.ul`
   width: 76px;
 `;
 
-export const Cards = styled.div`
+export const CardNumber = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 64px);
-  grid-gap: 1rem;
+  grid-template-columns: 57px 1fr;
+  grid-gap: 20px;
+
+  img {
+    height: 41px;
+  }
 `;
 export const Main = styled.main`
   display: grid;
