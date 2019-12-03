@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import uniqueId from "lodash/uniqueId";
 import styled, { css } from "styled-components";
 
+const topLabel = css`
+  font-size: 11px;
+  transform: translateY(-30px) translateX(10px);
+`;
+
 const Wrapper = styled.div`
   position: relative;
   margin-bottom: 1rem;
@@ -9,21 +14,21 @@ const Wrapper = styled.div`
   label {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    left: 20px;
+    transform: translateY(-50%) translateX(20px);
     color: #737373;
+    transition: all 200ms ease;
   }
 
   input:focus + label,
   input:valid + label {
-    display: none;
+    ${topLabel}
   }
 
   ${props =>
     !props.empty &&
     css`
       input:invalid + label {
-        display: none;
+        ${topLabel}
       }
     `}
 
@@ -45,6 +50,7 @@ export default ({ onChange, type = "text", label, ...props }) => {
         required
         type={type}
         id={id}
+        name={id}
         className="full"
       />
       <label htmlFor={id}>{label}</label>
