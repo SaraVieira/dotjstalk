@@ -6,7 +6,7 @@ import Input from "./components/Input";
 import { CardNumber, Select } from "./components/Styled";
 import { useTranslation } from "react-i18next";
 import countries from "./utils/countries.json";
-import creditCardType from "credit-card-type";
+import { GetCardType } from "./utils/cardType";
 import unkown from "./images/unknown.svg";
 
 export default () => {
@@ -21,10 +21,8 @@ export default () => {
   };
 
   useEffect(() => {
-    if (creditCardType(cardNumber).length === 1) {
-      setCardType(creditCardType(cardNumber)[0].niceType);
-    }
-  }, [cardNumber]);
+    setCardType(GetCardType(cardNumber));
+  }, [cardNumber, cardType]);
   return (
     <>
       <main className="App">

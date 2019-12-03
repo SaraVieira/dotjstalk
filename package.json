@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@reach/router": "^1.2.1",
-    "credit-card-type": "^8.3.0",
     "i18next": "19.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
