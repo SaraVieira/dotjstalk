@@ -37,7 +37,14 @@ export default () => {
             <Input required full label={t("Street")} />
             <Input required type="text" label={t("Zip Code")} />
             <Input required type="text" label={t("City")} />
-            <Input required type="text" label={t("Country")} />
+            <Select>
+              <option selected>{t("Country")}</option>
+              {countries.map(country => (
+                <option key={country.value} value={country.code}>
+                  {country.name}
+                </option>
+              ))}
+            </Select>
             <Input required type="number" label={t("Phone Number")} full />
           </fieldset>
           <label>

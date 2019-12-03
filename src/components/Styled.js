@@ -74,5 +74,5 @@ export const Select = styled.select`
   border: 1px solid #595959;
   padding: 5.4px 6.3px;
   background: white;
-  max-width: 355px;
+  width: 100%;
 `;
