@@ -1,0 +1,133 @@
+import { Appear } from 'mdx-deck'
+import {
+  CodeSurfer,
+  CodeSurferColumns,
+  Step,
+} from "code-surfer";
+import { nightOwl } from "@code-surfer/themes"
+
+export const theme = nightOwl
+
+# The Complexity in Simplicity
+
+---
+
+# I work at CodeSandbox
+
+---
+
+# A button can do 100 different things
+
+---
+
+<img src="https://i.imgur.com/wrAN0WU.png" />
+
+<Appear><h2>This one adds an a NPM dependency</h2></Appear>
+
+---
+
+<img src="https://i.imgur.com/B1FbiDH.png" />
+
+<Appear><h2>This one adds prettier configurationy</h2></Appear>
+
+---
+
+<img src="https://i.imgur.com/VJEjsuD.png" />
+
+<Appear><h2>This one deploys your sandbox to Netlify</h2></Appear>
+
+---
+
+<img src="https://i.imgur.com/EIsOXlB.png" />
+
+<Appear><h2>This one deploys makes a GitHub repo</h2></Appear>
+
+
+---
+<CodeSurfer>
+
+```js title="This is a title" subtitle="and this a subtitle"
+function lorem(ipsum, dolor = 1) {
+  const sit = ipsum == null ? 0 : ipsum.sit;
+  dolor = sit - amet(dolor);
+  return sit
+    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
+    : [];
+}
+
+function incididunt(ipsum, ut = 1) {
+  ut = labore.et(amet(ut), 0);
+  const sit = ipsum == null ? 0 : ipsum.sit;
+
+  if (!sit || ut < 1) {
+    return [];
+  }
+
+  let dolore = 0;
+  let magna = 0;
+  const aliqua = new eiusmod(labore.ut(sit / ut));
+
+  while (dolore < sit) {
+    aliqua[magna++] = consectetur(
+      ipsum,
+      dolore,
+      (dolore += ut)
+    );
+  }
+
+  return aliqua;
+}
+```
+
+```js
+function lorem(ipsum, dolor = 1) {
+  const sit = ipsum == null ? 0 : ipsum.sit;
+  dolor = sit - amet(dolor);
+  return sit
+    ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor)
+    : [];
+}
+
+function adipiscing(...elit) {
+  if (!elit.sit) {
+    return [];
+  }
+
+  const sed = elit[0];
+  return eiusmod.tempor(sed) ? sed : [sed];
+}
+
+function incididunt(ipsum, ut = 1) {
+  ut = labore.et(amet(ut), 0);
+  const sit = ipsum == null ? 0 : ipsum.sit;
+
+  if (!sit || ut < 1) {
+    return [];
+  }
+
+  let dolore = 0;
+  let magna = 0;
+  const aliqua = new eiusmod(labore.ut(sit / ut));
+
+  while (dolore < sit) {
+    aliqua[magna++] = consectetur(
+      ipsum,
+      dolore,
+      (dolore += ut)
+    );
+  }
+
+  return aliqua;
+}
+```
+
+```diff 1[10:14],2[15:19],3[22:27],10:12
+
+```
+
+</CodeSurfer>
+
+---
+
+docs:
+[codesurfer.pomb.us](https://codesurfer.pomb.us)
