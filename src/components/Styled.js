@@ -64,3 +64,11 @@ export const Title = styled.h1`
   text-align: center;
   margin-top: 50px;
 `;
+
+export const Select = styled.select`
+  height: 42px;
+  border: 1px solid #595959;
+  padding: 5.4px 6.3px;
+  background: white;
+  max-width: 355px;
+`;

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { navigate } from "@reach/router";
 
 import Card from "./components/Card";
-import { Cards } from "./components/Styled";
+import { Cards, Select } from "./components/Styled";
 import { useTranslation } from "react-i18next";
+import countries from "./utils/countries.json";
 
 export default () => {
   const [showCards, setShowCards] = useState(false);
@@ -65,7 +66,14 @@ export default () => {
             />
             <input required type="text" placeholder={t("Zip Code")} />
             <input required type="text" placeholder={t("City")} />
-            <input required type="text" placeholder={t("Country")} />
+            <Select>
+              <option selected>{t("Country")}</option>
+              {countries.map(country => (
+                <option key={country.value} value={country.code}>
+                  {country.name}
+                </option>
+              ))}
+            </Select>
           </fieldset>
           <fieldset>
             <legend>{t("Payment Data")}</legend>
