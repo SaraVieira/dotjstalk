@@ -134,36 +134,18 @@ import React, { useState } from "react";
 import uniqueId from "lodash/uniqueId";
 import styled, { css } from "styled-components";
 
-const topLabel = css`
-  font-size: 11px;
-  transform: translateY(-30px) translateX(10px);
-`;
-
 const Wrapper = styled.div`
-  label {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%) translateX(20px);
-    color: #737373;
-    transition: all 200ms ease;
-  }
-
   input:focus + label,
   input:valid + label {
-    ${topLabel}
+    display: none;
   }
-
   ${props =>
     !props.empty &&
     css`
       input:invalid + label {
-        ${topLabel}
+        display: none;
       }
-    `}
-
-  input {
-    margin: 0;
-  }
+  `}
 `;
 
 export default ({ type = "text", label, ...props }) => {
@@ -249,4 +231,17 @@ export const GetCardType = number => {
 
 ## Your pretty code won't make your users come back
 
+---
 
+## With small additions we can make my mom pay the rest of the bills in her phone
+
+---
+
+### With additions like these we can have more CodeSandboxes
+### We can have more people coding
+
+---
+
+# Thank you
+## Sara Vieira
+### @NikkitaFTW
