@@ -59,3 +59,8 @@ export const Main = styled.main`
     margin-top: 0;
   }
 `;
+
+export const Title = styled.h1`
+  text-align: center;
+  margin-top: 50px;
+`;
