@@ -1,0 +1,177 @@
+import { Appear } from 'mdx-deck'
+import {
+  CodeSurfer,
+  CodeSurferColumns,
+  Step,
+} from "code-surfer";
+import { nightOwl } from "@code-surfer/themes"
+
+export const theme = nightOwl
+
+# The Complexity in Simplicity
+
+---
+
+# I work at CodeSandbox
+
+---
+
+# A button can do 100 different things
+
+---
+
+<img src="https://i.imgur.com/wrAN0WU.png" />
+
+<Appear><h2>This one adds an a NPM dependency</h2></Appear>
+
+---
+
+<img src="https://i.imgur.com/B1FbiDH.png" />
+
+<Appear><h2>This one adds prettier configurationy</h2></Appear>
+
+---
+
+<img src="https://i.imgur.com/VJEjsuD.png" />
+
+<Appear><h2>This one deploys your sandbox to Netlify</h2></Appear>
+
+---
+
+<img src="https://i.imgur.com/EIsOXlB.png" />
+
+<Appear><h2>This one deploys makes a GitHub repo</h2></Appear>
+
+---
+
+# So that you can click a button a lot of complexity happens behind the scenes
+
+---
+
+## We take the complexity so you don't have to
+
+---
+
+## Making the web easier and more accessible is on us
+
+---
+
+## Ever looked at a webpage and thought
+## You DO NOT need to do this
+
+---
+
+<img src="https://i.imgur.com/ifOuWCc.png" />
+
+---
+
+## What does that even mean?
+
+---
+
+# Let's talk forms
+<Appear>
+  <h3>Forms are the Paris Beauvais Airport of the internet</h3>
+</Appear>
+
+---
+
+# Code? Code!
+
+---
+
+# Languages are hard
+
+---
+
+<CodeSurfer>
+
+```js title="Get the browser language"
+navigator.languages
+  ? navigator.languages[0]
+  : navigator.language || navigator.userLanguage || "en";
+```
+
+</CodeSurfer>
+
+---
+
+# Addresses are even harder
+
+---
+
+<CodeSurfer>
+
+```jsx
+  <label>
+    <input
+      type="checkbox"
+      checked={!showBilling}
+      onClick={() => setShowBilling(!showBilling)}
+    />
+    Billing data equal to shipping data
+  </label>
+```
+
+</CodeSurfer>
+
+---
+
+# Accessability
+
+---
+### Placeholders are not read by assistive technology
+---
+### Placeholders do not get translated
+---
+### Placeholders are not labels
+---
+
+<CodeSurfer>
+
+```jsx
+import React, { useState } from "react";
+import uniqueId from "lodash/uniqueId";
+import styled, { css } from "styled-components";
+
+const Wrapper = styled.div`
+  input:focus + label,
+  input:valid + label {
+    display: none;
+  }
+  ${props =>
+    !props.empty &&
+    css`
+      input:invalid + label {
+        display: none;
+      }
+  `}
+`;
+
+export default ({ type = "text", label, ...props }) => {
+  const [id] = useState(() => uniqueId("checkout-"));
+  const [value, setValue] = useState("");
+  return (
+    <Wrapper empty={Boolean(!value)}>
+      <input
+        onChange={e => setValue(e.target.value)}
+        type={type}
+        id={id}
+      />
+      <label htmlFor={id}>{label}</label>
+    </Wrapper>
+  );
+};
+```
+
+</CodeSurfer>
+
+---
+## Custom Selects?
+---
+## https://doineedacustomselect.com
+---
+
+---
+docs:
+[codesurfer.pomb.us](https://codesurfer.pomb.us)
