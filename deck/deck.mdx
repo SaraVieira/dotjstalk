@@ -130,38 +130,49 @@ navigator.languages
 <CodeSurfer>
 
 ```jsx
-import React, { useState } from "react";
-import uniqueId from "lodash/uniqueId";
-import styled, { css } from "styled-components";
+const topLabel = css`
+  font-size: 11px;
+  transform: translateY(-30px) translateX(10px);
+`;
 
 const Wrapper = styled.div`
+  label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(20px);
+    color: #737373;
+    transition: all 200ms ease;
+  }
+
   input:focus + label,
   input:valid + label {
-    display: none;
+    ${topLabel}
   }
+
   ${props =>
     !props.empty &&
     css`
       input:invalid + label {
-        display: none;
+        ${topLabel}
       }
-  `}
+    `}
 `;
 
-export default ({ type = "text", label, ...props }) => {
+export default ({ onChange, type = "text", label, ...props }) => {
   const [id] = useState(() => uniqueId("checkout-"));
   const [value, setValue] = useState("");
   return (
     <Wrapper empty={Boolean(!value)}>
       <input
-        onChange={e => setValue(e.target.value)}
         type={type}
         id={id}
+        name={id}
       />
       <label htmlFor={id}>{label}</label>
     </Wrapper>
   );
 };
+
 ```
 
 </CodeSurfer>
