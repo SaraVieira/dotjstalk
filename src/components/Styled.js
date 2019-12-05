@@ -5,17 +5,24 @@ export const Button = styled.button`
   border: 0;
   background: transparent;
   margin: 0;
-  margin-right: 1rem;
   color: black;
+
+  :hover {
+    background: transparent;
+  }
 `;
 
 export const FlagButton = styled.button`
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   padding: 0;
   border: 0;
   background: transparent;
   margin: 0;
+
+  :hover {
+    background: transparent;
+  }
 `;
 
 export const HeaderComponent = styled.header`
@@ -41,7 +48,8 @@ export const Countries = styled.ul`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 76px;
+  left: 0;
+  width: 100%;
 `;
 
 export const Cards = styled.div`
@@ -54,6 +62,10 @@ export const Main = styled.main`
   grid-template-columns: 600px 1fr;
   grid-gap: 4rem;
   align-items: center;
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 
   h1 {
     margin-top: 0;
