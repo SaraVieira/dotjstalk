@@ -16,7 +16,7 @@ function Header() {
       <Link to="/">
         <Logo />
       </Link>
-      <div>
+      <div style={{ position: "relative" }}>
         <Button onClick={() => setOpen(!open)}>{t("Language")}</Button>
         {open ? (
           <Countries>
