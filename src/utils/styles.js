@@ -58,4 +58,9 @@ export default createGlobalStyle`
     align-items: center;
     justify-content: center;
   }
+
+  label {
+    display: flex;
+    align-items: center;
+  }
 `;

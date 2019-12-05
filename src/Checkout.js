@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { navigate } from "@reach/router";
 
 import Card from "./components/Card";
+import Input from "./components/Input";
 import { Cards, Select } from "./components/Styled";
 import { useTranslation } from "react-i18next";
 import countries from "./utils/countries.json";
 
 export default () => {
   const [showCards, setShowCards] = useState(false);
+  const [showBilling, setShowBilling] = useState(false);
   const { t } = useTranslation();
 
   const onSubmit = e => {
@@ -21,26 +23,11 @@ export default () => {
           <h2>{t("Checkout")}</h2>
           <fieldset>
             <legend>{t("Your Data")}</legend>
-            <input
-              required
-              type="text"
-              className="full"
-              placeholder={t("Name")}
-            />
-            <input
-              required
-              type="email"
-              className="full"
-              placeholder={t("Email")}
-            />
-            <input
-              required
-              type="text"
-              className="full"
-              placeholder={t("Street")}
-            />
-            <input required type="text" placeholder={t("Zip Code")} />
-            <input required type="text" placeholder={t("City")} />
+            <Input required full label={t("Name")} />
+            <Input required type="email" full label={t("Email")} />
+            <Input required full label={t("Street")} />
+            <Input required type="text" label={t("Zip Code")} />
+            <Input required type="text" label={t("City")} />
             <Select>
               <option selected>{t("Country")}</option>
               {countries.map(country => (
@@ -49,66 +36,42 @@ export default () => {
                 </option>
               ))}
             </Select>
-            <input
-              required
-              type="number"
-              placeholder={t("Phone Number")}
-              className="full"
-            />
+            <Input required type="number" label={t("Phone Number")} full />
           </fieldset>
-
-          <fieldset>
-            <legend>{t("Billing Data")}</legend>
+          <label>
             <input
-              required
-              type="text"
-              className="full"
-              placeholder={t("Name")}
+              type="checkbox"
+              checked={!showBilling}
+              onClick={() => setShowBilling(!showBilling)}
             />
-            <input
-              required
-              type="text"
-              className="full"
-              placeholder={t("Street")}
-            />
-            <input required type="text" placeholder={t("Zip Code")} />
-            <input required type="text" placeholder={t("City")} />
-            <Select>
-              <option selected>{t("Country")}</option>
-              {countries.map(country => (
-                <option key={country.value} value={country.code}>
-                  {country.name}
-                </option>
-              ))}
-            </Select>
-          </fieldset>
+            Billing data equal to shipping data
+          </label>
+          {showBilling ? (
+            <fieldset>
+              <legend>{t("Billing Data")}</legend>
+              <Input required full label={t("Name")} />
+              <Input required full label={t("Street")} />
+              <Input required type="text" label={t("Zip Code")} />
+              <Input required type="text" label={t("City")} />
+              <Select>
+                <option selected>{t("Country")}</option>
+                {countries.map(country => (
+                  <option key={country.value} value={country.code}>
+                    {country.name}
+                  </option>
+                ))}
+              </Select>
+            </fieldset>
+          ) : null}
           <fieldset>
             <legend>{t("Payment Data")}</legend>
             {showCards ? (
               <>
-                <input
-                  className="full"
-                  required
-                  type="text"
-                  placeholder={t("Name on Card")}
-                />
-                <input
-                  className="full"
-                  required
-                  type="number"
-                  placeholder={t("Card Number")}
-                />
-                <input
-                  required
-                  type="number"
-                  placeholder={t("Expiration Month")}
-                />
-                <input
-                  required
-                  type="number"
-                  placeholder={t("Expiration Year")}
-                />
-                <input required type="number" placeholder={t("CCV")} />
+                <Input full required label={t("Name on Card")} />
+                <Input full required type="number" label={t("Card Number")} />
+                <Input required type="number" label={t("Expiration Month")} />
+                <Input required type="number" label={t("Expiration Year")} />
+                <Input required type="number" label={t("CCV")} />
               </>
             ) : (
               <>
