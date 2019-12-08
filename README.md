@@ -1,9 +1,9 @@
 # Complexity in Simplicity Talk
 
-# Slides: http://complexity-in-simplicity.surge.sh/
+## Slides: http://complexity-in-simplicity.surge.sh/
 
 
-# Webapp
+## Webapp
 
  - Start: https://complexity-in-simplicity.netlify.com/
  - Localization Change: https://deploy-preview-8--complexity-in-simplicity.netlify.com/
