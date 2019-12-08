@@ -8,6 +8,7 @@ import countries from "./utils/countries.json";
 
 export default () => {
   const [showCards, setShowCards] = useState(false);
+  const [showBilling, setShowBilling] = useState(false);
   const { t } = useTranslation();
 
   const onSubmit = e => {
@@ -56,32 +57,41 @@ export default () => {
               className="full"
             />
           </fieldset>
-
-          <fieldset>
-            <legend>{t("Billing Data")}</legend>
+          <label>
             <input
-              required
-              type="text"
-              className="full"
-              placeholder={t("Name")}
+              type="checkbox"
+              checked={!showBilling}
+              onClick={() => setShowBilling(!showBilling)}
             />
-            <input
-              required
-              type="text"
-              className="full"
-              placeholder={t("Street")}
-            />
-            <input required type="text" placeholder={t("Zip Code")} />
-            <input required type="text" placeholder={t("City")} />
-            <Select>
-              <option selected>{t("Country")}</option>
-              {countries.map(country => (
-                <option key={country.value} value={country.code}>
-                  {country.name}
-                </option>
-              ))}
-            </Select>
-          </fieldset>
+            Billing data equal to shipping data
+          </label>
+          {showBilling ? (
+            <fieldset>
+              <legend>{t("Billing Data")}</legend>
+              <input
+                required
+                type="text"
+                className="full"
+                placeholder={t("Name")}
+              />
+              <input
+                required
+                type="text"
+                className="full"
+                placeholder={t("Street")}
+              />
+              <input required type="text" placeholder={t("Zip Code")} />
+              <input required type="text" placeholder={t("City")} />
+              <Select>
+                <option selected>{t("Country")}</option>
+                {countries.map(country => (
+                  <option key={country.value} value={country.code}>
+                    {country.name}
+                  </option>
+                ))}
+              </Select>
+            </fieldset>
+          ) : null}
           <fieldset>
             <legend>{t("Payment Data")}</legend>
             {showCards ? (

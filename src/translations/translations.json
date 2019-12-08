@@ -1,6 +1,7 @@
 {
   "pt": {
     "translation": {
+      "Billing data equal to shipping data": "Morada de facturação igual",
       "Select your Card Type": "Selecione o tipo de cartão",
       "Pay": "Pagar",
       "Payment Data": "Dados de Pagamento",
@@ -29,6 +30,7 @@
   },
   "en": {
     "translation": {
+      "Billing data equal to shipping data": "Billing data equal to shipping data",
       "Select your Card Type": "Select your Card Type",
       "Pay": "Pay",
       "Payment Data": "Payment Data",
@@ -57,6 +59,7 @@
   },
   "de": {
     "translation": {
+      "Billing data equal to shipping data": "Rechnungsdaten gleich Versanddaten",
       "Select your Card Type": "Wählen Sie Ihren Kartentyp",
       "Pay": "Zahlen",
       "Payment Data": "Zahlungsdaten",
@@ -85,6 +88,7 @@
   },
   "fr": {
     "translation": {
+      "Billing data equal to shipping data": "Données de facturation égales aux données d'expédition",
       "Select your Card Type": "Sélectionnez votre type de carte",
       "Pay": "Payer",
       "Payment Data": "Données de paiement",
